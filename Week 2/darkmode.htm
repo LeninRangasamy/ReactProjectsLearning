@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dark toggler</title>
+    <style>
+        .cdark{
+            background-color:black;
+            color:white;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        
+        function Dark(){
+            const [dark,setDark]=React.useState(false);
+            const chdark=()=>setDark(!dark)
+                       
+            return(
+                <div>
+                    <button
+                    onClick={chdark}
+                    className={dark?"cdark":"nodark"}
+                    >
+                        Dark
+                    </button><hr/>
+                </div>
+            )
+        }
+        //function for secret message
+        function Message(){
+            const[nosec,setSec]=React.useState(false)
+           const show=()=>setSec(!nosec)
+                                               
+            return(
+                <div>
+                    {nosec&&<p>This message is secret</p>}
+                    <button
+                    onClick={show}
+                    >
+                        {nosec?"Hide":"Show"}
+                    </button><br/><hr/>
+                    
+                </div>
+            )
+        }
+       
+        function Form() {
+          const [name, setName] = React.useState("");
+
+          const handleChange = (e) => {
+              setName(e.target.value);
+  }
+
+          const handleSubmit = (e) => {
+              e.preventDefault();
+    alert(`Submitted name: ${name}`);
+  }
+
+      return (
+          <form onSubmit={handleSubmit}>
+          <input type="text" value={name} onChange={handleChange} />
+          <button type="submit">Submit</button>
+        </form>
+      );
+    }
+        
+        function Main(){
+            return(
+                <div>
+                    <Dark />
+                    <Message />
+                    <Form />
+                </div>
+            )
+        }
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<Main/>);
+    </script>
+  </body>
+</html>
