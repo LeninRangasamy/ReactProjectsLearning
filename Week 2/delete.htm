@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        //Toggle text function
+        
+        function Toggle() {
+            const [isVisible, setIsVisible] =React.useState(false);
+            const toggle=()=>setIsVisible(!isVisible)
+           
+            
+            return (
+                <div>
+                    <button 
+                    onClick={toggle}                      >
+                    {isVisible?"Hide":"Show"}
+                    </button>
+      {isVisible && <p>This is visible</p>}
+                </div>
+            );
+        }
+        
+        
+        //Counter function
+        
+        function Counter(){
+            const [count,setValue]=React.useState(0)
+            const increase=()=>setValue(count+1)
+            return(
+                <div>
+                    <h1>Count :{count}</h1>
+                    <button onClick={increase} >
+                        Increase
+                        </button>
+                </div>
+            )
+        }
+        
+        function Status(){
+          const [ntrue,setTrue]=React.useState(false)
+          const updatef=()=>setTrue(!ntrue)
+            return(
+                <div>
+                    <p>{ntrue?"Online":"Offline"}</p>
+                    <button
+                    onClick={updatef}
+                    >Click
+                    </button>
+                </div>
+            )
+        }
+        
+               
+      function Main(){
+          return(
+              <div>
+                  <Toggle/>
+                  <Counter />
+                  <Status />
+              </div>
+          )
+      }
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<Main/>);
+    </script>
+  </body>
+</html>

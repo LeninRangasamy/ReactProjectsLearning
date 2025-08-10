@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        
+        function Todolist(){
+            const [input,setInput]=React.useState('')
+            const [todos,setTodo]=React.useState([])
+            const updat=()=>setInput(event.target.value)
+            const add =()=>{
+                setTodo([...todos,input])
+               setInput('')
+            }
+            
+            
+            
+            return(
+                <div>
+                    <h1>To Do's</h1>
+                    <input value={input}
+                    onChange={updat} />
+                    <button
+                    onClick={add}
+                    >Add</button>
+                    <ul>
+                        {todos.map(
+                            (todo,index)=>
+                            <li
+                            key={index}
+                            >{todo}</li>
+                        )}
+                        
+                    </ul>
+                </div>
+            )
+        }
+            
+        
+        
+       
+        
+        
+        
+        
+        
+        function Main(){
+            return(
+                <div>
+                    <Todolist />
+                </div>
+            )
+        }
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<Main/>);
+    </script>
+  </body>
+</html>

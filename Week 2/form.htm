@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        
+        function Form(){
+            const[name,setName]=React.useState("")
+            const Changefun=(event)=>setName(event.target.value)
+            const submitf=(event)=>{
+                event.preventDefault()
+                if (name.trim()===''){
+                    alert('Input field is empty')
+                }
+                console.log("Submitted")
+                setName("")
+            }
+        
+            return(
+                <div>
+                    <form onSubmit={submitf}>
+                        <lable>Name</lable>
+                        <input 
+                        value={name}
+                        onChange={Changefun}
+                        />
+                        <button type="submit"
+                        >
+                            Submit
+                        </button>
+                   
+                   
+                    </form>
+                </div>
+            )
+        }
+        
+        
+
+function SignupForm() {
+  const [name, setName] = React.useState('');
+  const [email, setEmail] =React.useState('');
+  const [error, setError] = React.useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Basic validations
+    if (name.trim() === '' || email.trim() === '') {
+      setError('All fields are required.');
+      return;
+    }
+
+    if (!email.includes('@')) {
+      setError('Invalid email address.');
+      return;
+    }
+
+    // If no errors, proceed
+    setError('');
+    console.log('Form submitted:', { name, email });
+
+    // Reset fields
+    setName('');
+    setEmail('');
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Name:</label><br />
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label>Email:</label><br />
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+
+ 
+        
+        
+        
+        
+        
+        
+        
+        
+        function Main(){
+            return(
+                <div>
+                    <Form />
+                    <SignupForm />
+                    
+                </div>
+            )
+        }
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<Main />);
+    </script>
+  </body>
+</html>
