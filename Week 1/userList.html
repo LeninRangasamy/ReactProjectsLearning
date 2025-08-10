@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <style>
+        body{
+            margin:0;
+            padding: 0;
+        }
+    .card{
+        background-color: beige;
+        margin: 10px;
+        padding: 10px;
+        width: 130px;
+        text-align:center;
+        border:1px solid black;
+        border-radius:10px;
+        display: inline-block;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        function Course(
+        {name="undefined",
+        about="Error while loading",
+        price="undefined", 
+        language="not specified"}
+        ){
+            return(
+                <div className="card">
+                    <img alt="image" />
+                    <h2>{name}</h2>
+                    <p>{about}</p>
+                    <p>{price}</p>
+                    <p>{language}</p>
+                </div>
+            );
+        }
+        function App(){
+            return(
+                <>
+                    <Course 
+                    name="HTML" 
+                    about="This is an basic to advanced level of HTML course" 
+                    price="Rs.299" 
+                    language="Tamil"
+                    
+                    />
+                    <Course 
+                    name="CSS" 
+                    about="This is a basic to intermediate level of CSS crash course" 
+                    price="Rs.259" 
+                    language="Tamil"
+                    />
+                    <Course 
+                    name="Javascript" 
+                    about="This is basic to advance level of Javascript course" 
+                    price="Rs.499"
+                    language="Tamil"
+                    />
+                    
+                </>
+            );
+        }
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />)
+    </script>
+  </body>
+</html>
