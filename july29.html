@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+    <link rel="stylesheet" href="/storage/emulated/0/reactpros/style.css"/>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        function ProfileCard({clgname,name,dep,rollno}){
+            return(
+                <div className="card">
+                    <h2>{clgname}</h2>
+                    <img src="" alt="profile image"/>
+                    <h3>{name}</h3>
+                    <h4>{dep}</h4>
+                    <h4>{rollno}</h4>
+                </div>
+            )
+        }
+        
+        function ProfileList(){
+            const profiles=[
+                {
+                    clgname : "CLS info",
+                    name :"Alwin",
+                    dep :"B.Trch IT",
+                    rollno :"22IT023"
+                },
+                {
+                    clgname :"ABC info",
+                    name : "Bob",
+                    dep : "B.Tech IT",
+                    rollno : "22IT077"
+                },
+                {
+                    clgname :"KWP info",
+                    name : "Maran",
+                    dep : "B.Tech IT",
+                    rollno : "22CS226"
+                },
+                {
+                    clgname :"XYZ Deps",
+                    name : "Pelvin",
+                    dep : "B.Tech IT",
+                    rollno:"23CS115"
+                },
+                {
+                    clgname : "ICT Act",
+                    name : "Henry",
+                    dep :"B.E. EEE",
+                    rollno:"25EEE11"
+                }
+            ];
+            const totalfun=profiles.map(({clgname,name,dep,rollno})=>
+                <ProfileCard key={rollno}
+                clgname={clgname}
+                name={name}
+                dep={dep}
+                rollno={rollno}
+                />)
+            return(
+                <div>
+                    {totalfun}
+                </div>
+            )
+        }
+        
+        
+        
+        function Main(){
+            return (
+                <>
+                    <ProfileList />
+                   
+                                                                                            
+                </>
+                
+            )
+        }
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<Main/>);
+    </script>
+  </body>
+</html>
